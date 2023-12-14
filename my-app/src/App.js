@@ -1,31 +1,32 @@
 import styles from './App.module.css';
 import { useState } from 'react';
 
-export const App = () => {
-	const btnArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '+', '-', '=', 'C'];
-	const btnValues = btnArray.filter((type) => typeof type === 'number');
-	const btnActions = btnArray.filter((type) => typeof type === 'string');
+const btnArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '+', '-', '=', 'C'];
+const btnValues = btnArray.filter((type) => !isNaN(type));
+const btnActions = btnArray.filter((type) => isNaN(type));
 
+export const App = () => {
 	const [operand1, setOperand1] = useState('');
 	const [operator, setOperator] = useState('');
 	const [operand2, setOperand2] = useState('');
 	const [isResult, setIsResult] = useState(false);
 
 	const calculateValues = (e) => {
-		if (!isNaN(e.target.value) && operator === '') {
+		const { value } = e.target;
+		if (!isNaN(value) && operator === '') {
 			setIsResult(false);
-			setOperand1(operand1 + e.target.value);
-		} else if (!isNaN(e.target.value) && operator !== '') {
+			setOperand1(operand1 + value);
+		} else if (!isNaN(value) && operator !== '') {
 			setIsResult(false);
-			setOperand2(operand2 + e.target.value);
+			setOperand2(operand2 + value);
 		} else {
-			switch (e.target.value) {
+			switch (value) {
 				case '+':
-					setOperator(e.target.value);
+					setOperator(value);
 					setIsResult(false);
 					break;
 				case '-':
-					setOperator(e.target.value);
+					setOperator(value);
 					setIsResult(false);
 					break;
 				case 'C':
@@ -59,7 +60,7 @@ export const App = () => {
 		return (
 			<button
 				onClick={calculateValues}
-				className={typeof value === 'number' ? styles.calcBtn : styles.actionBtn}
+				className={!isNaN(value) ? styles.calcBtn : styles.actionBtn}
 				value={value}
 			>
 				{value}
