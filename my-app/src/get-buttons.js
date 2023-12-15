@@ -15,6 +15,9 @@ export const getButtons = () => {
 		{ id: 'C', label: 'C', group: 'right', handle: handleReset },
 		{ id: '+', label: '+', group: 'right', handle: handleOperand },
 		{ id: '-', label: '-', group: 'right', handle: handleOperand },
+		{ id: '*', label: '*', group: 'right', handle: handleOperand },
+		{ id: '/', label: '/', group: 'right', handle: handleOperand },
+		{ id: '%', label: '%', group: 'right', handle: handleOperand },
 		{ id: '=', label: '=', group: 'right', handle: handleCalculate },
 	];
 };

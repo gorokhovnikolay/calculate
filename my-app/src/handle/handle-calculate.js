@@ -19,7 +19,21 @@ export function handleCalculate({
 				setOperand2('');
 				setOperator('');
 				break;
-
+			case '*':
+				setOperand1(Number(operand1) * Number(operand2));
+				setOperand2('');
+				setOperator('');
+				break;
+			case '/':
+				setOperand1(Number(operand1) / Number(operand2));
+				setOperand2('');
+				setOperator('');
+				break;
+			case '%':
+				setOperand1(Number(operand1) % Number(operand2));
+				setOperand2('');
+				setOperator('');
+				break;
 			default:
 				break;
 		}
